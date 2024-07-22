@@ -59,3 +59,29 @@ class GradeBook:
         # Append the new course to the course_list
         self.course_list.append(new_course)
 
+
+        
+# Prompt the user for student and course information
+def register_student_for_course(self):
+    student_email = input("Enter student email: ")
+    course_name = input("Enter course name: ")
+
+#identifying and finding the student and course in the respecive information
+    student = None
+    for s in self.student_list:
+        if s.email == student_email:
+            student = s
+            break
+
+    course = None
+    for c in self.course_list:
+        if c.name == course_name:
+            course = c
+            break
+
+#Incase the student and the course exists, students get registered to the course
+    if student and course:
+        course_info = {"name": course.name, "credits": course.credits, "grade": float(input("Enter course grade: "))}
+        student.register_for_course(course_info)
+
+
