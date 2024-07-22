@@ -99,3 +99,19 @@ def register_student_for_course(self):
                     temp = self.student_list[j]
                     self.student_list[j] = self.student_list[j + 1]
                     self.student_list[j + 1] = temp
+
+#Now working on the searching option
+def search_by_grade(self):
+    min_grade = float(input("Enter minimum grade: "))
+    max_grade = float(input("Enter maximum grade: "))
+    
+    filtered_students = []  # Create an empty list to store filtered students
+
+    # Loop through each student in the student list
+    for student in self.student_list:
+        # Check if the student's GPA is within the specified range
+        if min_grade <= student.GPA <= max_grade:
+            # If yes, add the student to the filtered_students list
+            filtered_students.append(student)
+    
+    return filtered_students
