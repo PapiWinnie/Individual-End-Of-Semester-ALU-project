@@ -84,4 +84,18 @@ def register_student_for_course(self):
         course_info = {"name": course.name, "credits": course.credits, "grade": float(input("Enter course grade: "))}
         student.register_for_course(course_info)
 
+#Calculation student GPA
+    def calculate_GPA(self):
+        for student in self.student_list:
+            student.calculate_GPA()
 
+#function to calculate the ranking
+    def calculate_ranking(self):
+    #Sorting the students GPA in terms of descending order
+        for i in range(len(self.student_list) - 1):
+            for j in range(len(self.student_list) - 1 - i):
+                if self.student_list[j].GPA < self.student_list[j + 1].GPA:
+                     # Swapping  the students if the current student's GPA is less than the next student's GPA
+                    temp = self.student_list[j]
+                    self.student_list[j] = self.student_list[j + 1]
+                    self.student_list[j + 1] = temp
