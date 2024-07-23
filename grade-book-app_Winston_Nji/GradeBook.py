@@ -115,3 +115,14 @@ def search_by_grade(self):
             filtered_students.append(student)
     
     return filtered_students
+
+#For loop to generate student transcript
+
+def generate_transcript(self):
+        for student in self.student_list:
+            print(f"Student: {student.names} - Email: {student.email}")
+            print("Courses Registered:")
+            for course in student.courses_registered:
+                print(f"  Course: {course['name']} - Credits: {course['credits']} - Grade: {course['grade']}")
+            print(f"GPA: {student.GPA}")
+            print("")
