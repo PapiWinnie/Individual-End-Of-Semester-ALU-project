@@ -2,10 +2,11 @@
 
 class Student:
     def __init__(self, email, names):
-        self.email = email
-        self.names = names
-        self.courses_registered = []
-        self.GPA = 0.0
+        self.email = email  # Student's email address
+        self.names = names  # Student's full name
+        self.courses_registered = []  # List of courses the student is registered for
+        self.GPA = 0.0  # Student's GPA, initially set to 0.0
+
 
 #Next step will be to calculate the studenst GPA based on the course he/she registered
 
@@ -143,7 +144,7 @@ def main():
         print("7. Generate Transcript")
         print("8. Exit")
 
-        choice = input("Enter your choice: ")
+        choice = input("Enter your number: ")
 
         if choice == "1":
             gradebook.add_student()
