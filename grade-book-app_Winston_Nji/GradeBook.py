@@ -28,21 +28,18 @@ class Student:
 
 class Course:
     def __init__(self, name, trimester, credits):
-        # Initialize the attributes of the Course class
-        self.name = name
-        self.trimester = trimester
-        self.credits = credits
-
-
-
+        self.name = name  # Course name
+        self.trimester = trimester  # Course trimester
+        self.credits = credits  # Course credits
 
 # Initializing the student_list and course_list as empty arrays
 class GradeBook:
     def __init__(self):
-        self.student_list = []
-        self.course_list = []
+        self.student_list = []  # List of students
+        self.course_list = []  # List of courses
 
  # Asking the users to input the student information 
+    def add_student(self):
         email = input("Enter student email: ")
         names = input("Enter student names: ")
         # Creating a new Student object with the provided student information
