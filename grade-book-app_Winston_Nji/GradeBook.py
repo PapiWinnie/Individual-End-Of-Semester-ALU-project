@@ -133,7 +133,7 @@ def main():
     gradebook = GradeBook()
 
     while True:
-        print("Menu:")
+        print("\nMenu:")
         print("1. Add Student")
         print("2. Add Course")
         print("3. Register Student for Course")
@@ -147,25 +147,32 @@ def main():
 
         if choice == "1":
             gradebook.add_student()
+            input("Press Enter to return to the main menu.")
         elif choice == "2":
             gradebook.add_course()
+            input("Press Enter to return to the main menu.")
         elif choice == "3":
             gradebook.register_student_for_course()
+            input("Press Enter to return to the main menu.")
         elif choice == "4":
             gradebook.calculate_GPA()
+            input("Press Enter to return to the main menu.")
         elif choice == "5":
             gradebook.calculate_ranking()
+            input("Press Enter to return to the main menu.")
         elif choice == "6":
             filtered_students = gradebook.search_by_grade()
             for student in filtered_students:
                 print(f"Student: {student.names} - GPA: {student.GPA}")
+            input("Press Enter to return to the main menu.")
         elif choice == "7":
             gradebook.generate_transcript()
+            input("Press Enter to return to the main menu.")
         elif choice == "8":
             break
         else:
             print("Invalid choice. Please try again.")
-
+            input("Press Enter to return to the main menu.")
 
 if __name__ == "__main__":
     main()
