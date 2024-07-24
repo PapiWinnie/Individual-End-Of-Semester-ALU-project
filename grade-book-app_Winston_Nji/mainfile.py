@@ -1,4 +1,4 @@
-from gradebook_classes import GradeBook
+from gradebook_classes import GradeBook, Student, Course
 
 
 # Display Menu
