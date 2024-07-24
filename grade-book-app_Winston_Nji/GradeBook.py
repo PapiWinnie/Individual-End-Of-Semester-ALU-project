@@ -29,6 +29,7 @@ class Course:
         self.trimester = trimester
         self.credits = credits
         self.grade = grade
+
 # Initializing the student_list and course_list as empty arrays
 class GradeBook:
     def __init__(self):
@@ -63,13 +64,11 @@ class GradeBook:
         if student and course:
             student.register_for_course(course)
 
-
     # Calculation student GPA
     def calculate_GPA(self):
         # Iterate through each student's courses_registered list
         for student in self.student_list:
             student.calculate_GPA()
-
 
     # Function to calculate the ranking
     def calculate_ranking(self):
@@ -86,7 +85,6 @@ class GradeBook:
         filtered_students = [student for student in self.student_list if min_grade <= student.GPA <= max_grade]
         return filtered_students
 
-
     # For loop to generate student transcript
     def generate_transcript(self):
         for student in self.student_list:
@@ -94,7 +92,6 @@ class GradeBook:
             for course in student.courses_registered:
                 print(f"Course: {course.name}, Grade: {course.grade}")
             print(f"GPA: {student.GPA}")
-        
 
 # Display Menu
 def main():
