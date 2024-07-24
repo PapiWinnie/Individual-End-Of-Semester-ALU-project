@@ -74,13 +74,8 @@ class GradeBook:
     # Function to calculate the ranking
     def calculate_ranking(self):
         # Sorting the students GPA in terms of descending order
-        for i in range(len(self.student_list) - 1):
-            for j in range(len(self.student_list) - 1 - i):
-                if self.student_list[j].GPA < self.student_list[j + 1].GPA:
-                    # Swapping the students if the current student's GPA is less than the next student's GPA
-                    temp = self.student_list[j]
-                    self.student_list[j] = self.student_list[j + 1]
-                    self.student_list[j + 1] = temp
+        sorted_students = sorted(self.student_list, key=lambda x: x.GPA, reverse=True)
+        return sorted_students
 
     # Now working on the searching option
     def search_by_grade(self):
@@ -95,19 +90,18 @@ class GradeBook:
     # For loop to generate student transcript
     def generate_transcript(self):
         for student in self.student_list:
-            print(f"Student: {student.names} - Email: {student.email}")
-            print("Courses Registered:")
+            print(f"Student: {student.names}, Email: {student.email}")
             for course in student.courses_registered:
-                print(f"  Course: {course['name']} - Credits: {course['credits']} - Grade: {course['grade']}")
+                print(f"Course: {course.name}, Grade: {course.grade}")
             print(f"GPA: {student.GPA}")
-            print("")
+        
 
 # Display Menu
 def main():
     gradebook = GradeBook()
-
+    
     while True:
-        print("Menu:")
+        print("\nMenu:")
         print("1. Add Student")
         print("2. Add Course")
         print("3. Register Student for Course")
@@ -116,29 +110,34 @@ def main():
         print("6. Search by Grade")
         print("7. Generate Transcript")
         print("8. Exit")
-
+        
         choice = input("Enter your choice: ")
-
-        if choice == "1":
+        
+        if choice == '1':
             gradebook.add_student()
-        elif choice == "2":
+        elif choice == '2':
             gradebook.add_course()
-        elif choice == "3":
+        elif choice == '3':
             gradebook.register_student_for_course()
-        elif choice == "4":
+        elif choice == '4':
             gradebook.calculate_GPA()
-        elif choice == "5":
-            gradebook.calculate_ranking()
-        elif choice == "6":
+        elif choice == '5':
+            ranking = gradebook.calculate_ranking()
+            for student in ranking:
+                print(f"{student.email} - {student.GPA}")
+        elif choice == '6':
             filtered_students = gradebook.search_by_grade()
             for student in filtered_students:
-                print(f"Student: {student.names} - GPA: {student.GPA}")
-        elif choice == "7":
+                print(f"{student.email} - {student.GPA}")
+        elif choice == '7':
             gradebook.generate_transcript()
-        elif choice == "8":
+        elif choice == '8':
             break
         else:
             print("Invalid choice. Please try again.")
+        
+        input("\nPress Enter to return to the main menu...")
 
+# Run the main program
 if __name__ == "__main__":
     main()
