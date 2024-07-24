@@ -10,11 +10,11 @@ class Student:
     # Next step will be to calculate the student's GPA based on the course he/she registered
     def calculate_GPA(self):
         # Calculate GPA based on the registered courses
-        if len(self.courses_registered) == 0:
-            self.GPA = 0.0
+        total_credits = sum(course.credits for course in self.courses_registered)
+        if total_credits == 0:
+            self.GPA = 0
         else:
-            total_points = sum(course['grade'] * course['credits'] for course in self.courses_registered)
-            total_credits = sum(course['credits'] for course in self.courses_registered)
+            total_points = sum(course.grade * course.credits for course in self.courses_registered)
             self.GPA = total_points / total_credits
 
     # Final step for student initialization will be to register the student for a course
@@ -24,11 +24,11 @@ class Student:
 # Initialization of attributes for the student course classes
 
 class Course:
-    def __init__(self, name, trimester, credits):
-        self.name = name  # Course name
-        self.trimester = trimester  # Course trimester
-        self.credits = credits  # Course credits
-
+    def __init__(self, name, trimester, credits, grade=0):
+        self.name = name
+        self.trimester = trimester
+        self.credits = credits
+        self.grade = grade
 # Initializing the student_list and course_list as empty arrays
 class GradeBook:
     def __init__(self):
@@ -61,17 +61,8 @@ class GradeBook:
 
         # Finding the course by name
         if student and course:
-            course_info = {"name": course.name, "credits": course.credits, "grade": float(input("Enter course grade: "))}
-            student.register_for_course(course_info)
+            student.register_for_course(course)
 
-        # In case the student and the course exists, students get registered to the course
-        if student and course:
-            course_info = {
-                "name": course.name,
-                "credits": course.credits,
-                "grade": float(input("Enter course grade: "))
-            }
-            student.register_for_course(course_info)
 
     # Calculation student GPA
     def calculate_GPA(self):
