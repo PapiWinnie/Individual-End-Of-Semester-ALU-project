@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 from gradebook_classes import GradeBook, Student, Course
 
 

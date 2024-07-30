@@ -1,4 +1,4 @@
-# gradebook_classes.py
+#!/usr/bin/python3
 
 class Student:
     def __init__(self, email, names):
