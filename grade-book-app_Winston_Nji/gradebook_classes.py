@@ -8,6 +8,10 @@ class Student:
         self.GPA = 0.0  # Student's GPA, initially set to 0.0
 
     def calculate_GPA(self):
+        print(f"\nCalculating GPA for {self.names}")
+        print(f"Registered Courses: {[course.name for course in self.courses_registered]}")
+        print(f"Grades and Credits: {[(course.grade, course.credits) for course in self.courses_registered]}")
+        
         total_points = sum(course.grade * course.credits for course in self.courses_registered)
         total_credits = sum(course.credits for course in self.courses_registered)
     
@@ -16,12 +20,15 @@ class Student:
         else:
             self.GPA = total_points / total_credits
     
-        print(f"The GPA is: {self.GPA:.2f}")
+        print(f"The GPA is: {self.GPA:.2f}\n")
         return self.GPA
 
     def register_for_course(self, course, grade):
+        # Set the grade for the course and add it to the student's registered courses
         course.grade = grade
         self.courses_registered.append(course)
+        # Debug: Print confirmation of registration
+        print(f"Registered {self.names} for {course.name} with grade {course.grade}\n")
 
 
 class Course:
@@ -42,6 +49,7 @@ class GradeBook:
         names = input("Enter student names: ")
         new_student = Student(email, names)
         self.student_list.append(new_student)
+        print(f"Student {names} added.\n")
 
     def add_course(self):
         name = input("Enter course name: ")
@@ -49,6 +57,7 @@ class GradeBook:
         credits = float(input("Enter course credits: "))
         new_course = Course(name, trimester, credits)
         self.course_list.append(new_course)
+        print(f"Course {name} added.\n")
 
     def register_student_for_course(self):
         student_email = input("Enter student email: ")
@@ -60,6 +69,8 @@ class GradeBook:
 
         if student and course:
             student.register_for_course(course, grade)
+        else:
+            print("Student or course not found. Please check the details and try again.\n")
 
     def calculate_GPA(self):
         for student in self.student_list:
@@ -79,4 +90,4 @@ class GradeBook:
             print(f"Student: {student.names}, Email: {student.email}")
             for course in student.courses_registered:
                 print(f"Course: {course.name}, Grade: {course.grade}")
-            print(f"GPA: {student.GPA:.2f}")
+            print(f"GPA: {student.GPA:.2f}\n")
