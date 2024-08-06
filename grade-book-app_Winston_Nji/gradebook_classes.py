@@ -10,10 +10,12 @@ class Student:
     def calculate_GPA(self):
         total_points = sum(course.grade * course.credits for course in self.courses_registered)
         total_credits = sum(course.credits for course in self.courses_registered)
+    
         if total_credits == 0:
             self.GPA = 0.0
         else:
             self.GPA = total_points / total_credits
+    
         print(f"The GPA is: {self.GPA:.2f}")
         return self.GPA
 
